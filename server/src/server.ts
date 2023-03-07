@@ -5,7 +5,9 @@ import { routes } from './routes'
 const app = express()
 
 app.use(cors())
-app.use(routes)
 
-app.listen(process.env.PORT || 8000, ()=> console.log('Server run http://localhost:8000'))
+app.get('/', (req, res) => res.json({message:'Api release cyclic'}))
+app.use(routes)
+const port = process.env.PORT || 8001
+app.listen(port, ()=> console.log(`Server run http://localhost:${port}`))
 
